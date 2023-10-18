@@ -15,9 +15,9 @@ jobs:
         run: go get .
       - name: Build
         run: make build
-      - name: Run Lint
-        run: make lint
-      - name: Run audit
-        run: make critic
-      - name: Run security
-        run: make security
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v3.7.0
+      - name: Run Gosec Security Scanner
+        uses: securego/gosec@master
+        with:
+          args: ./...
