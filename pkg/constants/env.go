@@ -1,0 +1,28 @@
+package constants
+
+// Environment Variable Constant
+// Put env name in here to prevent typo
+const (
+	APP_NAME  = "APP_NAME"
+	APP_ENV   = "APP_ENV"
+	APP_DEBUG = "APP_DEBUG"
+	APP_PORT  = "APP_PORT"
+	APP_URL   = "APP_URL"
+
+	DB_HOST = "DB_HOST"
+	DB_PORT = "DB_PORT"
+	DB_USER = "DB_USER"
+	DB_PASS = "DB_PASS"
+	DB_NAME = "DB_NAME"
+
+	SENTRY_DSN = "SENTRY_DSN"
+
+	NEWRELIC_ENABLED  = "NEWRELIC_ENABLED"
+	NEWRELIC_APP_NAME = "NEWRELIC_APP_NAME"
+	NEWRELIC_LICENSE  = "NEWRELIC_LICENSE"
+
+	REDIS_HOST     = "REDIS_HOST"
+	REDIS_PORT     = "REDIS_PORT"
+	REDIS_PASSWORD = "REDIS_PASSWORD"
+	REDIS_DB       = "REDIS_DB"
+)

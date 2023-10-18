@@ -1,0 +1,18 @@
+version: '3.6'
+
+services:
+  api:
+    container_name: fiber-api
+    ports:
+      - 8000:8000
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./storage/logs:/app/storage/logs
+    networks:
+      - fiber-api-network
+
+networks:
+  fiber-api-network:
+    driver: bridge

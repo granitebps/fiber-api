@@ -1,0 +1,56 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a Fiber API Doc",
+        "title": "Fiber API",
+        "contact": {
+            "name": "Granite Bagas",
+            "url": "https://granitebps.com",
+            "email": "granitebagas28@gmail.com"
+        },
+        "license": {
+            "name": "MIT"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/v1/ping": {
+            "get": {
+                "description": "Do a ping to service just make sure service is working normally.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tools"
+                ],
+                "summary": "Ping to the service",
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "schema": {
+                            "$ref": "#/definitions/utils.JSONResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "utils.JSONResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "timestamp": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

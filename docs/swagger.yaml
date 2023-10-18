@@ -1,0 +1,37 @@
+basePath: /
+definitions:
+  utils.JSONResponse:
+    properties:
+      data: {}
+      message:
+        type: string
+      success:
+        type: boolean
+      timestamp:
+        type: integer
+    type: object
+info:
+  contact:
+    email: granitebagas28@gmail.com
+    name: Granite Bagas
+    url: https://granitebps.com
+  description: This is a Fiber API Doc
+  license:
+    name: MIT
+  title: Fiber API
+  version: "1.0"
+paths:
+  /api/v1/ping:
+    get:
+      description: Do a ping to service just make sure service is working normally.
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/utils.JSONResponse'
+      summary: Ping to the service
+      tags:
+      - tools
+swagger: "2.0"
