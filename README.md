@@ -5,5 +5,6 @@
 - [ ] Add scheduler
 - [ ] Add event listener/queue
 - [ ] Add test
-- [ ] Add github action
-- [ ] Add example 
+- [x] Add github action
+- [ ] Add example
+- [ ] Update readme 
