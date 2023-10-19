@@ -18,3 +18,6 @@ security:
 
 critic:
 	gocritic check -enableAll ./...
+
+wire:
+	wire
