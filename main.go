@@ -11,6 +11,7 @@ import (
 	"github.com/granitebps/fiber-api/pkg/constants"
 	"github.com/granitebps/fiber-api/pkg/core"
 	"github.com/granitebps/fiber-api/pkg/middleware"
+	"github.com/granitebps/fiber-api/scheduler"
 	"github.com/granitebps/fiber-api/src/route"
 	"github.com/spf13/viper"
 )
@@ -24,16 +25,26 @@ import (
 // @license.name MIT
 // @BasePath /
 func main() {
+	// Load ENV and setup some config
 	config.SetupConfig(".env")
 
+	// Initiate Fiber
 	app := fiber.New(config.FiberConfig())
+
+	// Setup core package
 	c := core.SetupCore()
 
+	// Setup middleware
 	middleware.SetupMiddleware(app, c)
 
+	// Setup Dependency Injection
 	h := SetupDependencies(c)
 
+	// Setup route
 	route.SetupRoute(app, h)
+
+	// Setup scheduler
+	scheduler.SetupScheduler(c)
 
 	startServerWithGracefulShutdown(app)
 }

@@ -12,7 +12,7 @@
 
 ## TODO
 - [ ] Add JWT
-- [ ] Add scheduler
+- [x] Add scheduler
 - [ ] Add event listener/queue
 - [ ] Add test
 - [x] Add github action
