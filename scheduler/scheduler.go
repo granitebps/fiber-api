@@ -1,18 +1,22 @@
 package scheduler
 
 import (
+	"log"
 	"time"
 
 	"github.com/go-co-op/gocron"
 	"github.com/granitebps/fiber-api/pkg/core"
 )
 
-func SetupScheduler(core *core.Core) {
+func SetupScheduler(c *core.Core) {
 	lc, _ := time.LoadLocation("Asia/Jakarta")
 
 	s := gocron.NewScheduler(lc)
 
-	s.Every(1).Minutes().Do(SendHealthCheckSignal, core)
+	_, err := s.Every(1).Minutes().Do(SendHealthCheckSignal, c)
+	if err != nil {
+		log.Panic(err)
+	}
 
 	s.StartAsync()
 }
