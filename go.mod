@@ -12,7 +12,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/gofiber/swagger v0.1.14
 	github.com/google/wire v0.5.0
-	github.com/newrelic/go-agent/v3 v3.26.0
+	github.com/newrelic/go-agent/v3 v3.27.0
 	github.com/newrelic/go-agent/v3/integrations/nrmysql v1.2.2
 	github.com/newrelic/go-agent/v3/integrations/nrredis-v9 v1.0.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
