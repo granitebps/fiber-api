@@ -7,11 +7,12 @@ import (
 )
 
 type Core struct {
-	Newrelic *newrelic.Application
-	Log      *logrus.Logger
-	Cache    *Cache
-	Client   *resty.Request
-	Database *Database
+	Newrelic  *newrelic.Application
+	Log       *logrus.Logger
+	Cache     *Cache
+	Client    *resty.Request
+	Database  *Database
+	Validator *AppValidator
 }
 
 func SetupCore() *Core {
@@ -20,12 +21,14 @@ func SetupCore() *Core {
 	cache := SetupCache()
 	client := SetupResty()
 	db := SetupDb()
+	v := SetupValidator()
 
 	return &Core{
-		Newrelic: nr,
-		Log:      log,
-		Cache:    cache,
-		Client:   client,
-		Database: db,
+		Newrelic:  nr,
+		Log:       log,
+		Cache:     cache,
+		Client:    client,
+		Database:  db,
+		Validator: v,
 	}
 }
