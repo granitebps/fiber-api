@@ -47,6 +47,7 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 ### ./src
 **Folder with application functionality code.** This folder will be the heart of the code. This folder similar to `internal` folder in other go project but can be used in other place if needed. This little bit follow the SOLID principal.
 - `./src/handler` folder for functional handlers (used in routes)
+- `./src/middleware` folder for app middleware
 - `./src/model` folder for define your database table structure
 - `./src/repository` folder for querying to database
 - `./src/request` folder for define api request payload
@@ -68,4 +69,5 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - [ ] Add test
 - [x] Add github action
 - [ ] Add example
-- [x] Update readme 
+- [x] Update readme
+- [ ] Add validation

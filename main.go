@@ -10,8 +10,8 @@ import (
 	"github.com/granitebps/fiber-api/config"
 	"github.com/granitebps/fiber-api/pkg/constants"
 	"github.com/granitebps/fiber-api/pkg/core"
-	"github.com/granitebps/fiber-api/pkg/middleware"
 	"github.com/granitebps/fiber-api/scheduler"
+	"github.com/granitebps/fiber-api/src/middleware"
 	"github.com/granitebps/fiber-api/src/route"
 	"github.com/spf13/viper"
 )
