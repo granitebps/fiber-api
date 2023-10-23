@@ -5,6 +5,8 @@ import (
 
 	"github.com/ansel1/merry/v2"
 	"github.com/gofiber/fiber/v2"
+	"github.com/newrelic/go-agent/v3/integrations/nrpkgerrors"
+	"github.com/newrelic/go-agent/v3/newrelic"
 )
 
 type JSONResponse struct {
@@ -25,6 +27,9 @@ func ReturnSuccessResponse(c *fiber.Ctx, code int, msg string, data interface{})
 }
 
 func ReturnErrorResponse(c *fiber.Ctx, err error, data interface{}) error {
+	txn := newrelic.FromContext(c.UserContext())
+	txn.NoticeError(nrpkgerrors.Wrap(err))
+
 	msg := merry.UserMessage(err)
 	if msg == "" {
 		msg = err.Error()
