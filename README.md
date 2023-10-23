@@ -61,6 +61,7 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 ## Notes
 - Use `<Ctx>.UserContext()` to get context from fiber and parsing it down the line. That context will be used in all code that need or use context and registered it to newrelic.
 - Use `fibersentry.GetHubFromContext(<Ctx>)` to get sentry instance and use that instance to send exception or message to sentry `<*sentry.Hub>.CaptureException(<error>)` . See https://docs.gofiber.io/contrib/fibersentry_v1.x.x/fibersentry/#usage
+- Use https://github.com/ansel1/merry to wrap error so you can pass http error code and error message.
 
 ## TODO
 - [ ] Add JWT
@@ -71,4 +72,4 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - [ ] Add example
 - [x] Update readme
 - [x] Add validation
-- [ ] Add error wrapping
+- [x] Add error wrapping

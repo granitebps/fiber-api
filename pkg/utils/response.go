@@ -3,6 +3,7 @@ package utils
 import (
 	"time"
 
+	"github.com/ansel1/merry/v2"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -23,9 +24,14 @@ func ReturnSuccessResponse(c *fiber.Ctx, code int, msg string, data interface{})
 	})
 }
 
-func ReturnErrorResponse(c *fiber.Ctx, code int, msg string, data interface{}) error {
+func ReturnErrorResponse(c *fiber.Ctx, err error, data interface{}) error {
+	msg := merry.UserMessage(err)
+	if msg == "" {
+		msg = err.Error()
+	}
+
 	c.Set(fiber.HeaderContentType, fiber.MIMEApplicationJSON)
-	return c.Status(code).JSON(JSONResponse{
+	return c.Status(merry.HTTPCode(err)).JSON(JSONResponse{
 		Success:   false,
 		Message:   msg,
 		Data:      data,

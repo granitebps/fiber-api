@@ -3,6 +3,7 @@ module github.com/granitebps/fiber-api
 go 1.19
 
 require (
+	github.com/ansel1/merry/v2 v2.1.2
 	github.com/getsentry/sentry-go v0.25.0
 	github.com/go-co-op/gocron v1.35.2
 	github.com/go-playground/validator/v10 v10.11.1

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/ansel1/merry/v2"
 	"github.com/goccy/go-json"
 	"github.com/granitebps/fiber-api/pkg/constants"
 	"github.com/granitebps/fiber-api/pkg/utils"
@@ -30,7 +31,9 @@ func FiberConfig() fiber.Config {
 				message = e.Message
 			}
 
-			return utils.ReturnErrorResponse(c, code, message, nil)
+			err = merry.Wrap(err, merry.WithHTTPCode(code), merry.WithUserMessage(message))
+
+			return utils.ReturnErrorResponse(c, err, nil)
 		},
 	}
 }

@@ -3,6 +3,7 @@ package middleware
 import (
 	"time"
 
+	"github.com/ansel1/merry/v2"
 	_ "github.com/granitebps/fiber-api/docs"
 
 	"github.com/gofiber/contrib/fibernewrelic"
@@ -43,7 +44,8 @@ func SetupMiddleware(a *fiber.App, c *core.Core) {
 		Expiration:        1 * time.Second,
 		LimiterMiddleware: limiter.SlidingWindow{},
 		LimitReached: func(c *fiber.Ctx) error {
-			return utils.ReturnErrorResponse(c, fiber.StatusTooManyRequests, "Too many requests.", nil)
+			err := merry.New("Too many requests.", merry.WithHTTPCode(fiber.StatusTooManyRequests), merry.WithUserMessage("Too many requests."))
+			return utils.ReturnErrorResponse(c, err, nil)
 		},
 	}))
 
