@@ -53,7 +53,7 @@ func (v *AppValidator) Validate(c *fiber.Ctx, payload any) (fields []ErrorField,
 	return
 }
 
-func validationRuleMessage(field string, rule string, def string) string {
+func validationRuleMessage(field, rule, def string) string {
 	switch rule {
 	case "required":
 		return fmt.Sprintf("The %s field is required.", field)
