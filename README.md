@@ -16,7 +16,6 @@
 4. Install docker (optional) and some tools:
    - https://github.com/swaggo/swag for auto-generating Swagger API docs
    - https://github.com/securego/gosec for checking Go security issues
-   - https://github.com/go-critic/go-critic for checking Go the best practice issues
    - https://github.com/golangci/golangci-lint for checking Go linter issues
    - https://github.com/cosmtrek/air for run the app with hot reload
    - https://github.com/google/wire for generate dependency injection file
