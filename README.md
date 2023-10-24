@@ -69,7 +69,8 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - [ ] Add event listener/queue
 - [ ] Add test
 - [x] Add github action
-- [ ] Add example
+- [x] Add example
 - [x] Update readme
 - [x] Add validation
 - [x] Add error wrapping
+- [ ] Add migration

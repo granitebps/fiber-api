@@ -1,5 +1,44 @@
 basePath: /
 definitions:
+  request.CreateBlogRequest:
+    properties:
+      description:
+        type: string
+      image:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - image
+    - title
+    type: object
+  request.UpdateBlogRequest:
+    properties:
+      description:
+        type: string
+      image:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - image
+    - title
+    type: object
+  transformer.BlogTransformer:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      title:
+        type: string
+    type: object
   utils.JSONResponse:
     properties:
       data: {}
@@ -21,14 +60,134 @@ info:
   title: Fiber API
   version: "1.0"
 paths:
+  /api/v1/blogs:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/transformer.BlogTransformer'
+                  type: array
+              type: object
+      summary: Get all blogs
+      tags:
+      - blog
+    post:
+      parameters:
+      - description: JSON payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateBlogRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.BlogTransformer'
+              type: object
+        "422":
+          description: Unprocessable Entity
+      summary: Save blog to database
+      tags:
+      - blog
+  /api/v1/blogs/{id}:
+    delete:
+      parameters:
+      - description: blog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.JSONResponse'
+        "404":
+          description: Not Found
+      summary: Delete existing blog by ID
+      tags:
+      - blog
+    get:
+      parameters:
+      - description: blog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.BlogTransformer'
+              type: object
+        "404":
+          description: Not Found
+      summary: Get single blog by ID
+      tags:
+      - blog
+    put:
+      parameters:
+      - description: blog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: JSON payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateBlogRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.BlogTransformer'
+              type: object
+        "404":
+          description: Not Found
+        "422":
+          description: Unprocessable Entity
+      summary: Update existing blog by ID
+      tags:
+      - blog
   /api/v1/ping:
     get:
       description: Do a ping to service just make sure service is working normally.
       produces:
       - application/json
       responses:
-        "202":
-          description: Accepted
+        "200":
+          description: OK
           schema:
             $ref: '#/definitions/utils.JSONResponse'
       summary: Ping to the service

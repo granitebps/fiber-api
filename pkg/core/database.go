@@ -82,5 +82,8 @@ func SetupMySql() *gorm.DB {
 	sDatabase.SetConnMaxIdleTime(1 * time.Minute)
 	sDatabase.SetConnMaxLifetime(1 * time.Minute)
 
+	// Auto migrate
+	// database.AutoMigrate(&model.Blog{})
+
 	return database
 }

@@ -22,7 +22,7 @@ func NewPingHandler(c *core.Core) *PingHandler {
 // @tags tools
 // @produce json
 // @router /api/v1/ping [get]
-// @success 202 {object} utils.JSONResponse
+// @success 200 {object} utils.JSONResponse
 func (h *PingHandler) Ping(c *fiber.Ctx) error {
 	return utils.ReturnSuccessResponse(c, fiber.StatusOK, "OK", nil)
 }
