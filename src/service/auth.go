@@ -39,11 +39,10 @@ func (s *AuthService) Register(ctx context.Context, req request.RegisterRequest)
 	if err == nil {
 		err = merry.New("duplicate email", merry.WithHTTPCode(fiber.StatusUnprocessableEntity), merry.WithUserMessage("Email already registered."))
 		return
-	} else {
-		if !errors.Is(err, gorm.ErrRecordNotFound) {
-			err = merry.Wrap(err)
-			return
-		}
+	}
+	if !errors.Is(err, gorm.ErrRecordNotFound) {
+		err = merry.Wrap(err)
+		return
 	}
 
 	pass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
