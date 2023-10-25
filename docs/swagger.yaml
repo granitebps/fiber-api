@@ -13,6 +13,31 @@ definitions:
     - image
     - title
     type: object
+  request.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  request.RegisterRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
   request.UpdateBlogRequest:
     properties:
       description:
@@ -39,6 +64,25 @@ definitions:
       title:
         type: string
     type: object
+  transformer.LoginTransformer:
+    properties:
+      token:
+        type: string
+    type: object
+  transformer.MeTransformer:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  transformer.RegisterTransformer:
+    properties:
+      token:
+        type: string
+    type: object
   utils.JSONResponse:
     properties:
       data: {}
@@ -60,6 +104,79 @@ info:
   title: Fiber API
   version: "1.0"
 paths:
+  /api/v1/auth/login:
+    post:
+      parameters:
+      - description: JSON payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/request.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.LoginTransformer'
+              type: object
+        "422":
+          description: Unprocessable Entity
+      summary: Login existing user
+      tags:
+      - auth
+  /api/v1/auth/me:
+    get:
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.MeTransformer'
+              type: object
+        "401":
+          description: Unauthorized
+      security:
+      - Bearer: []
+      summary: Get authenticated user
+      tags:
+      - auth
+  /api/v1/auth/register:
+    post:
+      parameters:
+      - description: JSON payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/request.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/utils.JSONResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/transformer.RegisterTransformer'
+              type: object
+        "422":
+          description: Unprocessable Entity
+      summary: Register a new user
+      tags:
+      - auth
   /api/v1/blogs:
     get:
       produces:
@@ -193,4 +310,10 @@ paths:
       summary: Ping to the service
       tags:
       - tools
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
