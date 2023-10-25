@@ -34,8 +34,8 @@ func v1Route(route fiber.Router, h *handler.Handler) {
 	auth.Get("me", middleware.Private(), h.Auth.Me) // You can register JWT middleware to spesific route
 
 	// Blog routes
-	blog := v1.Group("blogs")
-	blog.Get("", middleware.Private(), h.Blog.Index)
+	blog := v1.Group("blogs", middleware.Private()) // You can also register JWT middleware in group to include multiple route
+	blog.Get("", h.Blog.Index)
 	blog.Get(":id", h.Blog.Show)
 	blog.Post("", h.Blog.Store)
 	blog.Put(":id", h.Blog.Update)

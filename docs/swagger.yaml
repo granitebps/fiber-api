@@ -193,6 +193,8 @@ paths:
                     $ref: '#/definitions/transformer.BlogTransformer'
                   type: array
               type: object
+      security:
+      - Bearer: []
       summary: Get all blogs
       tags:
       - blog
@@ -218,6 +220,8 @@ paths:
               type: object
         "422":
           description: Unprocessable Entity
+      security:
+      - Bearer: []
       summary: Save blog to database
       tags:
       - blog
@@ -238,6 +242,8 @@ paths:
             $ref: '#/definitions/utils.JSONResponse'
         "404":
           description: Not Found
+      security:
+      - Bearer: []
       summary: Delete existing blog by ID
       tags:
       - blog
@@ -262,6 +268,8 @@ paths:
               type: object
         "404":
           description: Not Found
+      security:
+      - Bearer: []
       summary: Get single blog by ID
       tags:
       - blog
@@ -294,6 +302,8 @@ paths:
           description: Not Found
         "422":
           description: Unprocessable Entity
+      security:
+      - Bearer: []
       summary: Update existing blog by ID
       tags:
       - blog

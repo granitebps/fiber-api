@@ -28,6 +28,7 @@ func NewBlogHandler(c *core.Core, blogService *service.BlogService) *BlogHandler
 // @produce json
 // @router /api/v1/blogs [get]
 // @success 200 {object} utils.JSONResponse{data=[]transformer.BlogTransformer}
+// @Security Bearer
 func (h *BlogHandler) Index(c *fiber.Ctx) error {
 	res, err := h.BlogService.GetAllBlog(c.UserContext())
 	if err != nil {
@@ -46,6 +47,7 @@ func (h *BlogHandler) Index(c *fiber.Ctx) error {
 // @router /api/v1/blogs/{id} [get]
 // @success 200 {object} utils.JSONResponse{data=transformer.BlogTransformer}
 // @failure 404
+// @Security Bearer
 func (h *BlogHandler) Show(c *fiber.Ctx) error {
 	id, err := c.ParamsInt("id")
 	if err != nil {
@@ -70,6 +72,7 @@ func (h *BlogHandler) Show(c *fiber.Ctx) error {
 // @router /api/v1/blogs [post]
 // @success 201 {object} utils.JSONResponse{data=transformer.BlogTransformer}
 // @success 422
+// @Security Bearer
 func (h *BlogHandler) Store(c *fiber.Ctx) error {
 	var req request.CreateBlogRequest
 	errorField, err := h.Core.Validator.Validate(c, &req)
@@ -97,6 +100,7 @@ func (h *BlogHandler) Store(c *fiber.Ctx) error {
 // @success 200 {object} utils.JSONResponse{data=transformer.BlogTransformer}
 // @success 404
 // @success 422
+// @Security Bearer
 func (h *BlogHandler) Update(c *fiber.Ctx) error {
 	id, err := c.ParamsInt("id")
 	if err != nil {
@@ -128,6 +132,7 @@ func (h *BlogHandler) Update(c *fiber.Ctx) error {
 // @router /api/v1/blogs/{id} [delete]
 // @success 200 {object} utils.JSONResponse
 // @success 404
+// @Security Bearer
 func (h *BlogHandler) Destroy(c *fiber.Ctx) error {
 	id, err := c.ParamsInt("id")
 	if err != nil {
