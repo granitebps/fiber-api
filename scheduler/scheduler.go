@@ -4,6 +4,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/ansel1/merry/v2"
 	"github.com/go-co-op/gocron"
 	"github.com/granitebps/fiber-api/pkg/core"
 )
@@ -15,6 +16,7 @@ func SetupScheduler(c *core.Core) {
 
 	_, err := s.Every(1).Minutes().Do(SendHealthCheckSignal, c)
 	if err != nil {
+		err = merry.Wrap(err)
 		log.Panic(err)
 	}
 

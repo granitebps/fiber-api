@@ -14,7 +14,9 @@ import (
 func SetupDependencies(c *core.Core) *handler.Handler {
 	wire.Build(
 		repository.NewBlogRepository,
+		repository.NewUserRepository,
 		service.NewBlogService,
+		service.NewAuthService,
 
 		handler.NewHandler,
 	)

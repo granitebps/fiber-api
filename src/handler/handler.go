@@ -8,13 +8,19 @@ import (
 type Handler struct {
 	Core *core.Core
 	Ping *PingHandler
+	Auth *AuthHandler
 	Blog *BlogHandler
 }
 
-func NewHandler(c *core.Core, blogService *service.BlogService) *Handler {
+func NewHandler(
+	c *core.Core,
+	authService *service.AuthService,
+	blogService *service.BlogService,
+) *Handler {
 	return &Handler{
 		Core: c,
 		Ping: NewPingHandler(c),
+		Auth: NewAuthHandler(c, authService),
 		Blog: NewBlogHandler(c, blogService),
 	}
 }

@@ -16,8 +16,10 @@ import (
 // Injectors from wire.go:
 
 func SetupDependencies(c *core.Core) *handler.Handler {
+	userRepository := repository.NewUserRepository(c)
+	authService := service.NewAuthService(c, userRepository)
 	blogRepository := repository.NewBlogRepository(c)
 	blogService := service.NewBlogService(c, blogRepository)
-	handlerHandler := handler.NewHandler(c, blogService)
+	handlerHandler := handler.NewHandler(c, authService, blogService)
 	return handlerHandler
 }

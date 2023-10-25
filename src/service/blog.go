@@ -30,6 +30,7 @@ func NewBlogService(c *core.Core, blogRepo *repository.BlogRepository) *BlogServ
 func (s *BlogService) GetAllBlog(ctx context.Context) (result []transformer.BlogTransformer, err error) {
 	res, err := s.BlogRepo.GetAll(ctx)
 	if err != nil {
+		err = merry.Wrap(err)
 		return
 	}
 
@@ -73,6 +74,7 @@ func (s *BlogService) Create(ctx context.Context, req request.CreateBlogRequest)
 
 	err = s.BlogRepo.Insert(ctx, &res)
 	if err != nil {
+		err = merry.Wrap(err)
 		return
 	}
 
@@ -101,6 +103,7 @@ func (s *BlogService) Update(ctx context.Context, id uint64, req request.UpdateB
 
 	err = s.BlogRepo.Update(ctx, id, &res)
 	if err != nil {
+		err = merry.Wrap(err)
 		return
 	}
 
@@ -125,6 +128,7 @@ func (s *BlogService) Delete(ctx context.Context, id uint64) (err error) {
 
 	err = s.BlogRepo.Delete(ctx, id)
 	if err != nil {
+		err = merry.Wrap(err)
 		return
 	}
 

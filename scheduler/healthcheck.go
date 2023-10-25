@@ -3,6 +3,7 @@ package scheduler
 import (
 	"context"
 
+	"github.com/ansel1/merry/v2"
 	"github.com/granitebps/fiber-api/pkg/constants"
 	"github.com/granitebps/fiber-api/pkg/core"
 	"github.com/newrelic/go-agent/v3/newrelic"
@@ -19,6 +20,7 @@ func SendHealthCheckSignal(c *core.Core) {
 	url := viper.GetString(constants.HEALTHCHECK_URL)
 	_, err := c.Client.SetContext(ctx).Get(url)
 	if err != nil {
+		err = merry.Wrap(err)
 		c.Log.Error(err)
 	}
 }

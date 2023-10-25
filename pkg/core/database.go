@@ -84,6 +84,7 @@ func SetupMySql() *gorm.DB {
 
 	// Auto migrate
 	// database.AutoMigrate(&model.Blog{})
+	// database.AutoMigrate(&model.User{})
 
 	return database
 }

@@ -31,6 +31,7 @@ func NewBlogHandler(c *core.Core, blogService *service.BlogService) *BlogHandler
 func (h *BlogHandler) Index(c *fiber.Ctx) error {
 	res, err := h.BlogService.GetAllBlog(c.UserContext())
 	if err != nil {
+		err = merry.Wrap(err)
 		return utils.ReturnErrorResponse(c, err, nil)
 	}
 
@@ -54,6 +55,7 @@ func (h *BlogHandler) Show(c *fiber.Ctx) error {
 
 	res, err := h.BlogService.GetByID(c.UserContext(), uint64(id))
 	if err != nil {
+		err = merry.Wrap(err)
 		return utils.ReturnErrorResponse(c, err, nil)
 	}
 
@@ -78,6 +80,7 @@ func (h *BlogHandler) Store(c *fiber.Ctx) error {
 
 	res, err := h.BlogService.Create(c.UserContext(), req)
 	if err != nil {
+		err = merry.Wrap(err)
 		return utils.ReturnErrorResponse(c, err, nil)
 	}
 
@@ -110,6 +113,7 @@ func (h *BlogHandler) Update(c *fiber.Ctx) error {
 
 	res, err := h.BlogService.Update(c.UserContext(), uint64(id), req)
 	if err != nil {
+		err = merry.Wrap(err)
 		return utils.ReturnErrorResponse(c, err, nil)
 	}
 
@@ -133,6 +137,7 @@ func (h *BlogHandler) Destroy(c *fiber.Ctx) error {
 
 	err = h.BlogService.Delete(c.UserContext(), uint64(id))
 	if err != nil {
+		err = merry.Wrap(err)
 		return utils.ReturnErrorResponse(c, err, nil)
 	}
 

@@ -41,7 +41,7 @@ func (v *AppValidator) Validate(c *fiber.Ctx, payload any) (fields []ErrorField,
 			var elem ErrorField
 			field := utils.CamelToSnake(err.Field())
 			elem.Field = field
-			elem.Message = validationRuleMessage(field, err.Tag(), err.Error())
+			elem.Message = validationRuleMessage(field, err.Tag(), err.Error(), err.Param())
 
 			fields = append(fields, elem)
 		}
@@ -53,10 +53,14 @@ func (v *AppValidator) Validate(c *fiber.Ctx, payload any) (fields []ErrorField,
 	return
 }
 
-func validationRuleMessage(field, rule, def string) string {
+func validationRuleMessage(field, rule, def, param string) string {
 	switch rule {
 	case "required":
 		return fmt.Sprintf("The %s field is required.", field)
+	case "email":
+		return fmt.Sprintf("The %s field must be a valid email address.", field)
+	case "min":
+		return fmt.Sprintf("The %s field must be at least %s characters.", field, param)
 	default:
 		return def
 	}
