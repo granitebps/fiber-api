@@ -24,6 +24,11 @@ import (
 // @contact.email granitebagas28@gmail.com
 // @license.name MIT
 // @BasePath /
+
+// @securityDefinitions.apikey Bearer
+// @in header
+// @name Authorization
+// @description Type "Bearer" followed by a space and JWT token.
 func main() {
 	// Load ENV and setup some config
 	config.SetupConfig(".env")

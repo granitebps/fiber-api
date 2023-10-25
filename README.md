@@ -16,7 +16,6 @@
 4. Install docker (optional) and some tools:
    - https://github.com/swaggo/swag for auto-generating Swagger API docs
    - https://github.com/securego/gosec for checking Go security issues
-   - https://github.com/go-critic/go-critic for checking Go the best practice issues
    - https://github.com/golangci/golangci-lint for checking Go linter issues
    - https://github.com/cosmtrek/air for run the app with hot reload
    - https://github.com/google/wire for generate dependency injection file
@@ -64,12 +63,13 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - Use https://github.com/ansel1/merry to wrap error so you can pass http error code and error message.
 
 ## TODO
-- [ ] Add JWT
+- [x] Add JWT
 - [x] Add scheduler
 - [ ] Add event listener/queue
 - [ ] Add test
 - [x] Add github action
-- [ ] Add example
+- [x] Add example
 - [x] Update readme
 - [x] Add validation
 - [x] Add error wrapping
+- [ ] Add migration

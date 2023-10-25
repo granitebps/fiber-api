@@ -16,8 +16,5 @@ lint:
 security:
 	gosec ./...
 
-critic:
-	gocritic check -enableAll ./...
-
 wire:
 	wire
