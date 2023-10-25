@@ -11,3 +11,8 @@ const (
 	FORMAT_DATETIME = "2006-01-02 15:04:05"
 	LOG_FOLDER      = "storage/logs"
 )
+
+const (
+	// In minutes
+	JWT_DEFAULT_TTL = 60
+)

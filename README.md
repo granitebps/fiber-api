@@ -63,7 +63,7 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - Use https://github.com/ansel1/merry to wrap error so you can pass http error code and error message.
 
 ## TODO
-- [ ] Add JWT
+- [x] Add JWT
 - [x] Add scheduler
 - [ ] Add event listener/queue
 - [ ] Add test
