@@ -57,6 +57,10 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 ### ./storage
 **Folder with storing app misc files.** App log will be stored in this folder under `logs` folder. You can also store `file-based-storage` file in here.
 
+## References
+- [Standard Go Project Layout](https://github.com/golang-standards/project-layout?tab=readme-ov-file)
+- [Go - The Ultimate Folder Structure](https://gist.github.com/ayoubzulfiqar/9f1a34049332711fddd4d4b2bfd46096)
+
 ## Notes
 - Use `<Ctx>.UserContext()` to get context from fiber and parsing it down the line. That context will be used in all code that need or use context and registered it to newrelic.
 - Use `fibersentry.GetHubFromContext(<Ctx>)` to get sentry instance and use that instance to send exception or message to sentry `<*sentry.Hub>.CaptureException(<error>)` . See https://docs.gofiber.io/contrib/fibersentry_v1.x.x/fibersentry/#usage
@@ -73,3 +77,5 @@ This folder hold task scheduling code. If you want to use task scheduling like c
 - [x] Add validation
 - [x] Add error wrapping
 - [ ] Add migration
+- [ ] Add cmd
+- [ ] Add command
