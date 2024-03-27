@@ -12,7 +12,7 @@ require (
 	github.com/gofiber/contrib/fibernewrelic v1.2.1
 	github.com/gofiber/contrib/fibersentry v1.0.4
 	github.com/gofiber/contrib/jwt v1.0.8
-	github.com/gofiber/fiber/v2 v2.52.0
+	github.com/gofiber/fiber/v2 v2.52.4
 	github.com/gofiber/swagger v1.0.0
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/google/wire v0.6.0
