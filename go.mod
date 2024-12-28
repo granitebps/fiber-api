@@ -1,6 +1,6 @@
 module github.com/granitebps/fiber-api
 
-go 1.23.3
+go 1.23
 
 require (
 	github.com/ansel1/merry/v2 v2.2.1
