@@ -12,7 +12,7 @@ const docTemplate = `{
         "contact": {
             "name": "Granite Bagas",
             "url": "https://granitebps.com",
-            "email": "granitebagas28@gmail.com"
+            "email": "info@granitebps.com"
         },
         "license": {
             "name": "MIT"

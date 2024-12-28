@@ -21,7 +21,7 @@ import (
 // @description This is a Fiber API Doc
 // @contact.name Granite Bagas
 // @contact.url https://granitebps.com
-// @contact.email granitebagas28@gmail.com
+// @contact.email info@granitebps.com
 // @license.name MIT
 // @BasePath /
 
