@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/ansel1/merry/v2 v2.2.1
-	github.com/getsentry/sentry-go v0.30.0
+	github.com/getsentry/sentry-go v0.31.1
 	github.com/go-co-op/gocron v1.37.0
 	github.com/go-playground/validator/v10 v10.23.0
 	github.com/go-resty/resty/v2 v2.16.2
