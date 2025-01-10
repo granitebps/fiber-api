@@ -7,7 +7,7 @@ require (
 	github.com/getsentry/sentry-go v0.30.0
 	github.com/go-co-op/gocron v1.37.0
 	github.com/go-playground/validator/v10 v10.23.0
-	github.com/go-resty/resty/v2 v2.16.2
+	github.com/go-resty/resty/v2 v2.16.3
 	github.com/goccy/go-json v0.10.4
 	github.com/gofiber/contrib/fibernewrelic v1.3.0
 	github.com/gofiber/contrib/fibersentry v1.0.6
