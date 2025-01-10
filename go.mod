@@ -10,7 +10,7 @@ require (
 	github.com/go-resty/resty/v2 v2.16.2
 	github.com/goccy/go-json v0.10.4
 	github.com/gofiber/contrib/fibernewrelic v1.3.0
-	github.com/gofiber/contrib/fibersentry v1.0.6
+	github.com/gofiber/contrib/fibersentry v1.0.7
 	github.com/gofiber/contrib/jwt v1.0.10
 	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/gofiber/swagger v1.1.0
