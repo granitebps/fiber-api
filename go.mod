@@ -1,7 +1,6 @@
 module github.com/granitebps/fiber-api
 
 go 1.23
-
 require (
 	github.com/ansel1/merry/v2 v2.2.1
 	github.com/getsentry/sentry-go v0.30.0
@@ -26,7 +25,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/viper v1.19.0
 	github.com/swaggo/swag v1.16.4
-	golang.org/x/crypto v0.31.0
+	golang.org/x/crypto v0.36.0
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.12
 )
@@ -81,8 +80,8 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67 // indirect
 	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	golang.org/x/tools v0.28.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241223144023-3abc09e42ca8 // indirect
 	google.golang.org/grpc v1.69.2 // indirect
